@@ -1,0 +1,86 @@
+
+enum FVF_Fomat{
+	FVF_XYZ		= 0x00000001,
+	FVF_XYZW	= 0x00000002,
+	FVF_NORMAL	= 0x00000010,
+	FVF_RGB		= 0x00000100,
+	FVF_RGBA	= 0x00000200,
+	FVF_TEX		= 0x00001000,
+	FVF_TEX1	= 0x00002000,
+	FVF_TEX2	= 0x00004000,
+	FVF_TEX3	= 0x00008000,
+};
+
+typedef int VertexFomat;
+
+struct  VertexFormat_XYZW_RGBA
+{
+	vec4 position;
+	Color4f color;
+};
+const VertexFomat FVF_XYZW_RGBA;
+
+struct  VertexFormat_XYZ_TEX
+{
+	vec3 position;
+	vec2 tex_coord;
+};
+const VertexFomat FVF_XYZ_TEX;
+
+struct  VertexFormat_XYZ_NORMAL_TEX
+{
+	vec3 position;
+	vec3 normal;
+	vec2 tex_coord;
+};
+const VertexFomat FVF_XYZ_NORMAL_TEX;
+
+class Model : public Object
+{
+public:
+	~Model();
+
+	static Model* Create() { return NULL; };
+
+	static int GetVertexFomatSize(VertexFomat fomat);
+
+	//  设置顶点数据
+	// 参数：
+	//		data -- 顶点数据的起始地址
+	//		data_size -- 数据的大小
+	//		count -- 顶点的数目
+	void SetVertexData(void *data, int data_size, int count);
+
+	// 设置顶点格式
+	void SetVertexFomat(VertexFomat vertex_fomat);
+	VertexFomat GetVertexFomat() { return vertex_fomat_; }
+
+	//  设置纹理
+	int SetTexture(Texture2D *tex);
+	Texture2D* GetTexture();
+
+	// 设置对象的材质
+	void SetMaterial(Material *material);
+
+	// 获取材质信息
+	Material* GetMaterial() { return material_; };
+
+	// 绑定数据到当前的渲染环境
+	virtual AttemptERR BindData();
+
+	// 绑定数据并且渲染
+	virtual AttemptERR Draw(float f_time);
+
+	// 获取动作的总时间长度
+	float GetTimeLong() { return time_long_; }
+	
+	// 设置索引数组
+	void SetIndex(void *index, int index_count);
+	
+	AABB GetAABB(float f_time);
+
+	void SetAABB(AABB box);
+	
+	int GetNowFrame(float f_time) {return 0;} 
+};
+

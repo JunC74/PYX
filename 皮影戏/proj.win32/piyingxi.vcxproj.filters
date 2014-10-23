@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>h;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="attempt">
+      <UniqueIdentifier>{66263fbf-af50-41ac-b460-a1f9c4ec9e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\cocoa">
+      <UniqueIdentifier>{32d03b67-a491-4c07-9e47-5d3bace986dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\platform">
+      <UniqueIdentifier>{14d1f98c-a2a5-459f-aeb9-64f9f7cc6285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\platform\win32">
+      <UniqueIdentifier>{071f76ea-46b7-4507-bebe-e0b67532d274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\at_type">
+      <UniqueIdentifier>{43e2cb63-13de-4059-aa7f-8427ce4ee807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\message_system">
+      <UniqueIdentifier>{928e44f2-007d-4d04-865d-a2efaa0400bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\render">
+      <UniqueIdentifier>{3b5685ee-5c3e-4cd1-a1af-e52ca2ea02a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\Texture">
+      <UniqueIdentifier>{71e1651c-7e1e-4b3d-ba24-3571b88dc615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\input">
+      <UniqueIdentifier>{3c17fc50-73bf-4e85-97ee-eed7023779e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\Node">
+      <UniqueIdentifier>{8f5b8068-95b7-4288-93c6-f0ec23250167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\external_support">
+      <UniqueIdentifier>{eeaafd63-87e5-4ed0-813b-0ce851ed7bb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\external_support\CImage">
+      <UniqueIdentifier>{14636b7b-d636-48a5-af04-69d36b58c9e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\external_support\TinyXML">
+      <UniqueIdentifier>{5daf5f84-7d08-4098-84c5-bfe48fa3bd9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\external_support\lua">
+      <UniqueIdentifier>{4c394be4-ee1b-4227-a80b-704095b989f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\Schedule">
+      <UniqueIdentifier>{7c1b1961-1f68-4c1b-aeaa-d4ca94701c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\external_support\glm">
+      <UniqueIdentifier>{ff9150d3-51d8-461b-8bb7-ab6601804ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\shader">
+      <UniqueIdentifier>{81e1a658-d45e-4e92-a28a-7f08e97b4cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\model">
+      <UniqueIdentifier>{10dd45d7-cd75-4f66-9a07-c38a77d51aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="attempt\lua">
+      <UniqueIdentifier>{66e2ad0e-6847-45f8-b4ee-6af551966995}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\attempt\cocoa\Array.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\Log.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\Object.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\ResourceManager.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\AutoReleasePool.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\platform\win32\at_platform_win32.cpp">
+      <Filter>attempt\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\platform\win32\GLView.cpp">
+      <Filter>attempt\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\message_system\MessagePump.cpp">
+      <Filter>attempt\message_system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Render\material.cpp">
+      <Filter>attempt\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\GLState.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Render\camera_class.cpp">
+      <Filter>attempt\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\platform\win32\Application.cpp">
+      <Filter>attempt\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SourceCode\pyx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\external_support\CImage\CImage.cpp">
+      <Filter>attempt\external_support\CImage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\external_support\TinyXML\tinyxml2.cpp">
+      <Filter>attempt\external_support\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\texture\TextureLoader.cpp">
+      <Filter>attempt\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SourceCode\main-win32.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\input\input.cpp">
+      <Filter>attempt\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Node\Node.cpp">
+      <Filter>attempt\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Node\Sprite.cpp">
+      <Filter>attempt\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\lua\LuaManager.cpp">
+      <Filter>attempt\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\platform\win32\keyboard.cpp">
+      <Filter>attempt\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\schedule\schedule.cpp">
+      <Filter>attempt\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\lua\tolua_fix.c">
+      <Filter>attempt\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\external_support\glm\glm.cpp">
+      <Filter>attempt\external_support\glm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\FileTool.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Node\action_sprite.cpp">
+      <Filter>attempt\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\shader\shader_program.cpp">
+      <Filter>attempt\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\shader\shader_program_cache.cpp">
+      <Filter>attempt\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\texture\texture2D.cpp">
+      <Filter>attempt\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\model\geometry_model.cpp">
+      <Filter>attempt\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\model\model.cpp">
+      <Filter>attempt\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\model\obj_model.cpp">
+      <Filter>attempt\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\model\vds_model.cpp">
+      <Filter>attempt\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\cocoa\Root.cpp">
+      <Filter>attempt\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\schedule\Timeing.cpp">
+      <Filter>attempt\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\lua\lua_support.cpp">
+      <Filter>attempt\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\lua\LuaOpen.cpp">
+      <Filter>attempt\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\Render\light_manage.cpp">
+      <Filter>attempt\render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SourceCode\curtains.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\input\mind_control.cpp">
+      <Filter>attempt\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\attempt\at_type\AABB.cpp">
+      <Filter>attempt\at_type</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\attempt\cocoa\Array.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\Log.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\Object.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\ResourceManager.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\AutoReleasePool.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_config.h">
+      <Filter>attempt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_prefix.h">
+      <Filter>attempt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\platform\at_platform.h">
+      <Filter>attempt\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\attempt.h">
+      <Filter>attempt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\platform\win32\GLView.h">
+      <Filter>attempt\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\platform\win32\win32_prefix.h">
+      <Filter>attempt\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\at_type.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\message_system\Message.h">
+      <Filter>attempt\message_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\message_system\MessagePump.h">
+      <Filter>attempt\message_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\mat.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\vec.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\Size2D.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Render\material.h">
+      <Filter>attempt\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\Color.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\GLState.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\GLViewInterface.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Render\camera_class.h">
+      <Filter>attempt\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\platform\win32\Application.h">
+      <Filter>attempt\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SourceCode\pyx.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\CImage\CImage.h">
+      <Filter>attempt\external_support\CImage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\TinyXML\tinyxml2.h">
+      <Filter>attempt\external_support\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\texture\TextureLoader.h">
+      <Filter>attempt\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\input.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\thinkgear.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\keyboard.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\keyboard_conf.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Node\Node.h">
+      <Filter>attempt\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Node\Sprite.h">
+      <Filter>attempt\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\lua\LuaManager.h">
+      <Filter>attempt\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\lauxlib.h">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\lua.h">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\lua.hpp">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\luaconf.h">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\lualib.h">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\lua\tolua++.h">
+      <Filter>attempt\external_support\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\schedule\schedule.h">
+      <Filter>attempt\Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\lua\tolua_fix.h">
+      <Filter>attempt\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\external_support\glm\glm.h">
+      <Filter>attempt\external_support\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\FileTool.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Node\action_sprite.h">
+      <Filter>attempt\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\shader\shader_program.h">
+      <Filter>attempt\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\shader\shader_program_cache.h">
+      <Filter>attempt\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\texture\texture2D.h">
+      <Filter>attempt\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\model\geometry_model.h">
+      <Filter>attempt\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\model\model.h">
+      <Filter>attempt\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\model\obj_model.h">
+      <Filter>attempt\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\model\vds_model.h">
+      <Filter>attempt\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\Root.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\schedule\Timeing.h">
+      <Filter>attempt\Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\lua\lua_support.h">
+      <Filter>attempt\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\message_system\MessageEvent.h">
+      <Filter>attempt\message_system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\lua\LuaOpen.h">
+      <Filter>attempt\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\Render\light_manage.h">
+      <Filter>attempt\render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\attempt_err_msg.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SourceCode\curtains.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\mind_control.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\input\mind_control_conf.h">
+      <Filter>attempt\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\cocoa\MatrixStack.h">
+      <Filter>attempt\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\attempt\at_type\AABB.h">
+      <Filter>attempt\at_type</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Shader\position_color_fragment.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Resources\Shader\position_color_vectex.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Resources\Shader\position_tex_fragment.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Resources\Shader\position_tex_vectex.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Resources\Shader\position_fragment.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\Resources\Shader\position_vectex.glsl">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,34 @@
+
+enum ShaderType
+{
+	ShaderType_Position,		// 只提供点坐标 
+	ShaderType_Position_Color,	// 提供点坐标和点的颜色
+	ShaderType_Position_Tex,	// 提供点坐标和纹理
+	ShaderType_Phone,			// 提供一个点光源和一个聚光灯, 材质, 纹理, 坐标, 法线
+
+	ShaderType_Num,
+};
+
+static const char DefShader[ShaderType_Num][100];
+
+// ShaderProgram的对象管理类
+// (ShaderProgram对象添加进来之后我就不打算在游戏结束之前释放了- -)
+class ShaderProgramCache : public Object
+{
+public:
+	static ShaderProgramCache* GetInstance();
+
+	// 创建一个新的ShaderProgram对象
+	// file_name - shader文件在"Resources/Shader/"目录下的文件名,不需要了后缀
+	// 顶点shader的后缀规定为".vert"
+	// 片元shader的后缀规定为".frag"
+	ShaderProgram* LoadShaderProgram(char* file_name);
+
+	void LoadDefineShader();
+
+	ShaderProgram* GetShaderForKey(char *key);
+
+	void AddShader(ShaderProgram* shader);
+
+	~ShaderProgramCache();
+};

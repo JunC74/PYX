@@ -1,0 +1,181 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+//  --- mat.h ---
+//////////////////////////////////////////////////////////////////////////////
+
+class mat2 {
+public:
+
+   vec2  _m[2];
+   
+    //
+    //  --- ructors and Destructors ---
+    //
+
+    mat2( );
+
+    mat2(  vec2 a,  vec2 b );
+
+    mat2( float m00, float m10, float m01, float m11 );
+
+    mat2(  mat2 m );
+};
+
+//
+//  --- Non-class mat2 Methods ---
+//
+
+mat2 MatrixCompMult(mat2 A,  mat2 B );
+
+mat2 Transpose(mat2 A );
+
+//----------------------------------------------------------------------------
+//
+//  mat3 - 3D square matrix 
+//
+
+class mat3 {
+
+public:
+    vec3  _m[3];
+    //
+    //  --- ructors and Destructors ---
+    //
+
+    mat3(  float d = float(1.0) );
+
+    mat3(  vec3 a,  vec3 b,  vec3 c );
+
+    mat3( float m00, float m10, float m20,
+	  float m01, float m11, float m21,
+	  float m02, float m12, float m22 ) ;
+
+    mat3(  mat3 m );
+};
+
+//
+//  --- Non-class mat3 Methods ---
+//
+
+mat3 MatrixCompMult(  mat3 A,  mat3 B );
+
+mat3 Transpose(  mat3 A );
+
+//----------------------------------------------------------------------------
+//
+//  mat4.h - 4D square matrix
+//
+
+class mat4 {
+public:
+   vec4  _m[4];
+    //
+    //  --- ructors and Destructors ---
+    //
+
+    mat4();
+
+    mat4(  vec4 a,  vec4 b,  vec4 c,  vec4 d );
+
+    mat4( float m00, float m10, float m20, float m30,
+	  float m01, float m11, float m21, float m31,
+	  float m02, float m12, float m22, float m32,
+	  float m03, float m13, float m23, float m33 );
+
+    mat4(  mat4 m );
+
+};
+
+//
+//  --- Non-class mat4 Methods ---
+//
+
+mat4 MatrixCompMult(  mat4 A,  mat4 B ) ;
+
+mat4 Transpose(  mat4 A );
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Helpful Matrix Methods
+//
+//////////////////////////////////////////////////////////////////////////////
+
+vec4 Mvmult(  mat4 a,  vec4 b );
+
+//----------------------------------------------------------------------------
+//
+//  Rotation matrix generators
+//
+
+mat4 RotateX(  float theta );
+
+mat4 RotateY(  float theta );
+
+mat4 RotateZ(  float theta );
+
+mat4 Rotate( float theta,  float vx,
+			 float vy,  float vz);
+
+//----------------------------------------------------------------------------
+//
+//  Translation matrix generators
+//
+
+mat4 Translate(float x,  float y,  float z );
+
+mat4 Translate(vec3 v );
+
+mat4 Translate(vec4 v );
+
+//----------------------------------------------------------------------------
+//
+//  Scale matrix generators
+//
+
+mat4 Scale(  float x,  float y,  float z );
+mat4 Scale(vec3 v );
+
+//----------------------------------------------------------------------------
+//
+//  Projection transformation matrix geneartors
+//
+//    Note: Microsoft Windows (r) defines the keyword "far" in C/C++.  In
+//          order to avoid any name conflicts, we use the variable names
+//          "zNear" to reprsent "near", and "zFar" to reprsent "far".
+//
+
+
+mat4 Ortho(  float left,  float right,
+	     float bottom,  float top,
+	     float zNear,  float zFar );
+
+mat4 Ortho2D(  float left,  float right,
+	       float bottom,  float top );
+
+mat4 Frustum(  float left,  float right,
+	       float bottom,  float top,
+	       float zNear,  float zFar );
+
+mat4 Perspective(  float fovy,  float aspect,
+		   float zNear,  float zFar);
+//----------------------------------------------------------------------------
+//
+//  Viewing transformation matrix generation
+//
+
+mat4 LookAt(  vec4 eye,  vec4 at,  vec4 up );
+
+//----------------------------------------------------------------------------
+//
+// Generates a Normal Matrix
+//
+mat3 Normal(mat4 c);
+
+//----------------------------------------------------------------------------
+
+vec4 Minus( vec4 a,  vec4  b );
+
+void Printv(vec4 a );
+void Printm(mat4 a);
+
+mat4 Identity();

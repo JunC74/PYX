@@ -1,0 +1,1 @@
+tolua++ -L basic.lua -o "test_lua.cpp" %1

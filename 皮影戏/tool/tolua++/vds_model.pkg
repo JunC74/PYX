@@ -1,0 +1,21 @@
+
+class VDSModel : public GeometryModel
+{
+public:
+
+	~VDSModel();
+
+	static VDSModel* Create(char* file_name);
+	
+	// 更新帧
+	void Update(float f_delta);
+
+	AttemptERR Draw(float f_time);
+
+	const char* GetName();
+	
+	virtual AABB GetAABB(float f_time);
+
+	// 获取当前前时间是第几帧
+	int GetNowFrame(float f_time);
+};

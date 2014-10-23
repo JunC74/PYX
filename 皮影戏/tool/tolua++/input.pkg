@@ -1,0 +1,26 @@
+enum InputType
+{
+	INPUT_KeyBoard,		// 键盘输入
+	INPUT_MindControl,	// 脑电波输入
+	INPUT_NUM,			
+};
+class Input : public Object
+{
+public:
+
+	static Input* GetInstance();
+	
+	KeyBoard* GetKeyBoard();
+
+	MindControl* GetMindControl();
+	
+	// 定制输入的类型
+	void SetInputState(InputType type, bool state);
+
+	//  检查某个输入类型的状态
+	bool GetInputState(InputType type);
+
+	// 读取输入信息
+	void Read();
+
+};

@@ -1,0 +1,19 @@
+
+class Texture2D : public Object
+{
+public:
+	~Texture2D();
+	
+	GLuint GetTexHandle();
+
+	const char* GetTextureName();
+
+	int GetHeight();
+
+	int GetWidth();
+
+	void CreateMipmap();
+
+	// 是否为多级纹理对象
+	bool IsMipmap();
+};

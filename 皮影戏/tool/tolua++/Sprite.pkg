@@ -1,0 +1,36 @@
+
+class Sprite : public Node
+{
+public:
+
+	static Sprite* CreateWithModel(Model *model);
+
+	static Sprite* Create();
+
+	bool Init(Model *model);
+
+	Model* GetModel();
+
+	void SetGeomentryModel(Model *geomety_model);
+
+	virtual void Draw(float f_time);
+	
+	AABB GetAABB();
+	
+	// 播放控制
+	bool IsPause();
+	// 暂停播放
+	void Pause() ;
+	// 恢复播放
+	void Recover();
+	// 设置每一轮的播放时间
+	void SetPlayTime(float time);
+	// 获取每一轮的播放时间
+	float GetPlayTime();
+
+	// 设置播放次数
+	// @param count 为0时表示循环播放，>0时播放结束后精灵自动暂停
+	void SetPlayCount(int count);
+	// 获取播放次数
+	int GetPlayCount() ;
+};

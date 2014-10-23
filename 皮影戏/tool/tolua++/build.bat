@@ -1,0 +1,1 @@
+tolua++ -L basic.lua -o "../../attempt/lua/LuaOpen.cpp" attempt.pkg

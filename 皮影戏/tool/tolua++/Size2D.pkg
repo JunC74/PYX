@@ -1,0 +1,7 @@
+
+struct Size2D
+{
+	float width, height;
+	Size2D();
+	Size2D(float w, float h);
+};

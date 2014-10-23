@@ -1,0 +1,10 @@
+
+class ObjModel : public Model
+{
+public:
+	static ObjModel* Create(char* file_name);
+
+	AttemptERR Draw(float f_time);
+
+	~ObjModel();
+};

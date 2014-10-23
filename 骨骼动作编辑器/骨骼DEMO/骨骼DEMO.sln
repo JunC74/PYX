@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "骨骼DEMO", "骨骼DEMO.vcxproj", "{087D0724-D601-4B5A-9A33-681824BF5120}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{087D0724-D601-4B5A-9A33-681824BF5120}.Debug|Win32.ActiveCfg = Debug|Win32
+		{087D0724-D601-4B5A-9A33-681824BF5120}.Debug|Win32.Build.0 = Debug|Win32
+		{087D0724-D601-4B5A-9A33-681824BF5120}.Release|Win32.ActiveCfg = Release|Win32
+		{087D0724-D601-4B5A-9A33-681824BF5120}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

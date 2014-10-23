@@ -1,0 +1,29 @@
+
+
+class Object
+{
+	int id;
+	static Object* Create();
+
+	bool Init();
+
+	void AutoRelease();
+
+	void Retain();
+
+	void Release();
+
+	int GetCount();
+
+	void Copy(Object* object);
+
+	void Update(float f_delta);
+
+	Object();
+	
+	int GetID();
+	
+	~Object();
+
+	static int GetObjectNumber();
+};

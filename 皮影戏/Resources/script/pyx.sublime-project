@@ -1,0 +1,18 @@
+{
+	"folders":
+	[
+		{
+			"name": "皮影戏",
+			"path": "/I/JunC/Documents/Projects/皮影戏/Resources/script"
+		},
+		{
+			"path": "/I/JunC/Documents/quick-cocos2d-x-develop/framework"
+		},
+		{
+			"path": "/I/JunC/Documents/quick-cocos2d-x-develop/samples"
+		},
+		{
+			"path": "/I/JunC/Documents/Projects/皮影戏/tool/tolua++"
+		}
+	]
+}

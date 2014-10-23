@@ -1,0 +1,32 @@
+
+enum MessagePriority
+{
+	MSG_PRIORITY_NextFrame,		// 在下个帧处理
+	MSG_PRIORITY_Immediately,	// 即时处理消息
+
+	MSG_PRIORITY_NUM,
+};
+
+class Message : public Object
+{
+public:
+	static Message* Create();
+
+	static Message* Create(int type);
+public:
+	int type_ID;    // 消息类型
+	float f_timer_;
+	bool b_delivered; // 被消息井用于标记已处理过的消息
+	MessagePriority priority;	// 优先级
+};
+
+class DataMessage : public Message
+{
+private:
+public:
+	static DataMessage* Create(int type, void* data);
+
+	bool Init(int type, void *data);
+
+	void *data_storage_;
+};

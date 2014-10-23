@@ -1,0 +1,784 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"g",
+				"gradient_overlay_speed"
+			],
+			[
+				"he",
+				"healthbar"
+			],
+			[
+				"Init",
+				"InitCharacter"
+			],
+			[
+				"mx",
+				"maxValue"
+			],
+			[
+				"Get",
+				"GetPosition"
+			],
+			[
+				"bar",
+				"bar_sprite"
+			],
+			[
+				"bg",
+				"bg_sprite"
+			],
+			[
+				"c",
+				"character1"
+			],
+			[
+				"SetS",
+				"SetScale"
+			],
+			[
+				"Set",
+				"SetValue"
+			],
+			[
+				"SetV",
+				"SetVisible"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"Tr",
+				"Translation"
+			],
+			[
+				"gro",
+				"ground_sprite"
+			],
+			[
+				"en",
+				"enemy"
+			],
+			[
+				"ad",
+				"audience"
+			],
+			[
+				"Sc",
+				"ScheduleUpdate"
+			],
+			[
+				"Add",
+				"AddChild"
+			],
+			[
+				"ba",
+				"back_material"
+			],
+			[
+				"S",
+				"SetScale"
+			],
+			[
+				"ac",
+				"action_sprite"
+			],
+			[
+				"for",
+				"fori	for i,v in ipairs()"
+			],
+			[
+				"g_",
+				"g_point_light"
+			],
+			[
+				"V",
+				"Vec3Make"
+			],
+			[
+				"po",
+				"g_point_light"
+			],
+			[
+				"squ",
+				"square_sprite"
+			],
+			[
+				"Cra",
+				"CreateWithModel"
+			],
+			[
+				"key",
+				"keyboard"
+			],
+			[
+				"fu",
+				"function	function"
+			],
+			[
+				"Light",
+				"LightType"
+			],
+			[
+				"set",
+				"SetPosition"
+			],
+			[
+				"obj",
+				"obj_ball"
+			],
+			[
+				"obj_",
+				"obj_model"
+			],
+			[
+				"func_",
+				"func_handler"
+			],
+			[
+				"dir",
+				"dir_vector"
+			],
+			[
+				"file",
+				"file_name"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "scene_battle_ready.lua",
+			"settings":
+			{
+				"buffer_size": 8466,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "healthbar.lua",
+			"settings":
+			{
+				"buffer_size": 2048,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "character.lua",
+			"settings":
+			{
+				"buffer_size": 6649,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "pyx.lua",
+			"settings":
+			{
+				"buffer_size": 20205,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Character = {\n	sprite = nil,\n	spriteIndex = 1,\n	otherSprites = {},\n	destination = nil,\n	speed = Vec3Make(0, 0, 0),\n	isMoving = false,\n	health = 100,\n	damage = 10,\n	defence = 5,\n	position = Vec3Make(0, 0, 0),\n	STATUS = {\"NO_ACTION\", \"ACTION_PLAYING\", \"ACTION_FINISHED\"},\n	action_status = \"NO_ACTION\",\n	action_type = {move = 0, attack = 1, die = 2, speak = 3, attacked = 4},\n	player_sprite = nil\n}\nCharacter.__index = Character\n\nfunction Character:New()\n	-- body\n	local character_self = {}\n	setmetatable(character_self, Character)\n	character_self.sprite = nil\n	character_self.otherSprites = {}\n	character_self.destination = nil\n	character_self.STATUS = {\"NO_ACTION\", \"ACTION_PLAYING\", \"ACTION_FINISHED\"}\n	character_self.action_status = \"NO_ACTION\"\n	character_self.speed = Vec3Make(0, 0, 0)\n	character_self.health = 100\n	character_self.damage = 10\n	character_self.defence = 5\n\n	character_self.player_sprite = Node:Create()\n	self.sprite = nil\n	character_self.destination = character_self.position\n	character_self.speed = Vec3Make(1, 0, 0)\n	character_self.isMoving = false\n	character_self.action_status = character_self.STATUS[1]\n	character_self.action_type = {move = 0, attack = 1, die = 2}\n\n	return character_self\nend\n\nfunction Character:AddSprite(sprite)\n	sprite:SetPosition(self.position)\n	sprite:Pause()\n	sprite:SetVisible(false)\n	self.player_sprite:AddChild(sprite)\n	table.insert(self.otherSprites, sprite)\n	-- Print(\"Length: %d\", #self.otherSprites)\n	-- self.otherSprites[#self.otherSprites + 1] = sprite\nend\n\nfunction Character:SetPosition(newPosition)\n	-- body\n	self.position = newPosition\n	self.player_sprite:SetPosition(newPosition)\nend\n\nfunction Character:SelectSprite(select_sprite, spriteIndex)\n	if self.sprite ~= nil then\n		self.position = self.sprite:GetPosition()\n		self.sprite:SetVisible(false)\n		select_sprite:SetPosition(self.position)\n	end\n	self.spriteIndex = spriteIndex\n	self.sprite = select_sprite\n	self.sprite:SetPosition(self.position)\n	self.sprite:SetVisible(true)\nend\n\nfunction Character:Move()\n	-- body\n	self:SelectSprite(self.otherSprites[self.action_type.move], self.action_type.move)\n	if self.sprite:IsPause() then\n		self.sprite:SetPlayCount(0)\n		self.sprite:Recover()\n	end\n	self.isMoving = true\nend\n\nfunction Character:MoveLeft(offset, time)\n	-- body\n	local frames = time * 20\n	local moveSpeed = offset / frames\n	self:SetSpeed(Vec3Make(moveSpeed, 0, 0))\n	self:SetDestination(Vec3Make(self.position.x - offset, self.position.y, self.position.z))\n	self:Move()\nend\n\nfunction Character:MoveRight(offset, time)\n	-- body\n	local frames = time * 20\n	local moveSpeed = offset / frames\n	self:SetSpeed(Vec3Make(moveSpeed, 0, 0))\n	self:SetDestination(Vec3Make(self.position.x + offset, self.position.y, self.position.z))\n	self:Move()\nend\n\nfunction Character:MoveUp(offset, time)\n	-- body\n	local frames = time * 20\n	local moveSpeed = offset / frames\n	self:SetSpeed(Vec3Make(0, moveSpeed, 0))\n	self:SetDestination(Vec3Make(self.position.x, self.position.y + offset, self.position.z))\n	self:Move()\nend\n\nfunction Character:MoveDown(offset, time)\n	-- body\n	local frames = time * 20\n	local moveSpeed = offset / frames\n	self:SetSpeed(Vec3Make(0, moveSpeed, 0))\n	self:SetDestination(Vec3Make(self.position.x, self.position.y - offset, self.position.z))\n	self:Move()\nend\n\nfunction Character:SetAction(action_str, finish_func)\n	\nend\nfunction Character:MoveToDestination(time)\n	-- body\n	local x = math.abs(self.destination.x - self.position.x)\n	local y = math.abs(self.destination.y - self.position.y)\n	local z = math.abs(self.destination.z - self.position.z)\n	local frames = time * 20\n	local moveSpeed = Vec3Make(x / frames, y / frames, z / frames)\n	self:SetSpeed(moveSpeed)\n	self:Move()\nend\n\n\n\nfunction Character:ScheduleUpdate()\n	self.schedule_id = Schedule:GetInstance():RegisterScriptFunc(\n		function(dt)\n			self:Update(dt)\n		end, \n		0, \n		false)\nend\n\nfunction Character:UnScheduleUpdate()\n	Schedule:GetInstance():UnRegisterForTimeing(self.schedule_id)\nend\n\nfunction Character:IsOnDestination()\n	-- body\n	local a = Vec3Make(\n				self.destination.x - self.sprite:GetPosition().x,\n				self.destination.y - self.sprite:GetPosition().y,\n				self.destination.z - self.sprite:GetPosition().z\n			)\n	local b = Vec3Make(\n			math.abs(self.destination.x - self.sprite:GetPosition().x),\n			math.abs(self.destination.y - self.sprite:GetPosition().y),\n			math.abs(self.destination.z - self.sprite:GetPosition().z)\n		)\n	local x = 1\n	local y = 1\n	local z = 1\n	if math.abs(self.destination.x - self.sprite:GetPosition().x) > 0.0001 then\n		self.speed.x = math.abs(self.speed.x) * (a.x / b.x)\n	else \n		x = 0\n	end\n	if math.abs(self.destination.y - self.sprite:GetPosition().y) > 0.0001 then\n		self.speed.y = math.abs(self.speed.y) * (a.y / b.y)\n	else \n		y = 0\n	end\n	if math.abs(self.destination.z - self.sprite:GetPosition().z) > 0.0001 then\n		self.speed.z = math.abs(self.speed.z) * (a.z / b.z)\n	else \n		z = 0\n	end\n	if x + y + z == 0 then\n		return true\n	end\n	return false\nend\n\nfunction Character:Update(dt)\n	if self.sprite ~= nil then\n\n		if self:IsOnDestination() == true then\n			self.isMoving = false\n			if self.spriteIndex == self.action_type.move and\n				self.sprite:IsPause() == false then\n				self.sprite:Pause()\n			end\n		end\n		if self.isMoving == true then\n			self.sprite:SetTranslation(self.speed)\n			self.position = self.sprite:GetPosition()\n		end\n\n		if self.action_status == se lf.STATUS[2] then\n			if self.sprite:IsPause() == true then\n				self.action_status = self.STATUS[3]\n			end\n		end\n		\n	end\nend\n\nfunction Character:PlaySprite(playCount)\n	self.sprite:SetPlayCount(playCount)\n	self.sprite:Recover()\n	self.action_status = self.STATUS[2]\nend\n\nfunction Character:SetDestination(newDestination)\n	-- body\n	self.destination = newDestination\nend\n\nfunction Character:SetSpeed(speed)\n	self.speed = speed\nend\n\nfunction Character:Attack()\n	-- body\n	if self.spriteIndex ~= self.action_type.attack then\n		self:SelectSprite(self.otherSprites[self.action_type.attack], self.action_type.attack)\n	end\n	self:PlaySprite(1)\nend\n\nfunction Character:Die()\n	-- body\n	if self.spriteIndex ~= self.action_type.die then\n		self:SelectSprite(self.otherSprites[self.action_type.die], self.action_type.die)\n	end\n	self:PlaySprite(1)\nend\n\nfunction Character:IsDied()\n	-- body\n	if self.spriteIndex == self.action_type.die then\n		if self.action_status == self.STATUS[3] then\n			return true\n		end\n	end\n	return false\nend",
+			"file": "character - 副本.lua",
+			"file_size": 6632,
+			"file_write_time": 130445372732103996,
+			"settings":
+			{
+				"buffer_size": 6388,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/I/JunC/Desktop/毕设-终极/游戏/Resources/script/conf.lua",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/I/JunC/Documents/Projects/皮影戏/Resources/Action/enemy_weapon/xiabing_stand.vds",
+			"settings":
+			{
+				"buffer_size": 2989,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/healthbar - 副本.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/pyx.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/character.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/healthbar.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/scene_battle_ready.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/gamestatus.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/scene_battle_ready - 副本.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/pyx - 副本.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/hello.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/samples/editbox/scripts/game.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/test.lua",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/basic-backup.lua",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/basic.lua",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/schedule.pkg",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/Node.pkg",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/basic.lua",
+		"/I/JunC/Documents/Projects/皮影戏-更新/Resources/script/pyx.lua",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/samples/Lua/TestLua/Resources/luaScript/controller.lua",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/projects/lua_test/Resources/hello.lua",
+		"/I/JunC/Desktop/LuaJIT-2.0.3/src/jit/dis_x64.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/display.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/samples/tests/scripts/scenes/MainScene.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/functions.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/init.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/samples/tests/scripts/game.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/samples/tests/scripts/main.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/cocos2dx/CCNodeExtend.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/README_CN.md",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/samples/tests/scripts/config.lua",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/pyx.sublime-project",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/cc/GameObject.lua",
+		"/I/JunC/Documents/quick-cocos2d-x-develop/framework/cocos2dx/CCDrawNodeExtend.lua",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/message_system/Message.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/lua/tolua_fix.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/lua/LuaManager.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/lua/LuaManager.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/Render/lighting_manage.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/shader/shader_program.h",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/tools/tolua++/basic.lua",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/ResourceManager.h",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/cocos2dx/CCScheduler.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/ResourceManager.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/schedule/Timeing.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/attempt/schedule/schedule.cpp",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/cocos2dx/CCScheduler.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/hello2.lua",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/schedule/Timeing.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/schedule/schedule.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/schedule/schedule.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/at_type.h",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/attempt_err.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/at_type/Color.h",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/script/Testlua.lua",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/Texture.h",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/Size2D.h",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/mat.pkg",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/cocos2dx/script_support/CCScriptSupport.h",
+		"/I/JunC/Documents/Projects/皮影戏/tool/tolua++/model.h",
+		"/I/JunC/Documents/Projects/骨骼动作编辑器/骨骼DEMO/vds_object.cpp",
+		"/I/JunC/Documents/cocos2d-x-2.2.1/projects/lua_test/Resources/test.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/GLState.h",
+		"/I/JunC/Desktop/hosts",
+		"/I/JunC/Documents/3dsMax/export/t1.mtl",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/OBJ/t1.obj",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/FileTool.h",
+		"/I/JunC/Desktop/tutors/glm.c",
+		"/I/JunC/Documents/3dsMax/export/t2.mtl",
+		"/I/JunC/Desktop/tutors/data/f-16.mtl",
+		"/I/JunC/Desktop/tutors/glm.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/cocoa/FileTool.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/OBJ/t2.obj",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/Shader/position3_tex_vectex.glsl",
+		"/I/JunC/Documents/3dsMax/export/t2.obj",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/Shader/fPhone.glsl",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/basic-backup.lua",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/basic.lua",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/Object.pkg",
+		"/I/JunC/Desktop/model/test.mtl",
+		"/I/JunC/Desktop/OBJLoader/src/saito/objloader/OBJModel.java",
+		"/I/JunC/Documents/Projects/皮影戏/Resources/Shader/vPhone.glsl",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/lua/LuaOpen.h",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/Node.pkg",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/attempt.pkg",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/Node.h",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/CCNode.pkg",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/LuaOpen.cpp",
+		"/I/JunC/Documents/cocos2d-x-2.2/tools/tolua++/Cocos2d.pkg",
+		"/I/JunC/Documents/Projects/皮影戏/toole/tolua++/Lua.cpp",
+		"/I/JunC/Documents/cocos2d-x-2.2/scripting/lua/cocos2dx_support/LuaCocos2d.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/Lua.cpp",
+		"/I/JunC/Documents/Projects/骨骼动作编辑器/骨骼DEMO/vds_object.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/tolua_fix.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/basic0.lua",
+		"/I/JunC/Documents/cocos2d-x-2.2/cocos2dx/cocoa/CCObject.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/attempt/external_support/tolua++/basic0.lua",
+		"/I/JunC/Documents/Projects/皮影戏-更新/attempt/external_support/tolua++/Test.pkg",
+		"/I/JunC/Documents/Projects/皮影戏-更新/attempt/at_prefix.h",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/Test.pkg",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/Object.pkg",
+		"/I/JunC/Documents/Projects/皮影戏-更新/tool/tolua++/attempt.pkg",
+		"/I/JunC/Documents/Projects/皮影戏-更新/attempt/external_support/tolua++/basic.lua",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/message_system/MessagePump.cpp",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/message_system/MessagePump.h",
+		"/I/JunC/Documents/课程信息/图形学/实验8_光照与材质/辅助文件和Shader文件(辅助文件有更新)/vShader.glsl",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/message_system/CallbackInterface.h",
+		"/I/JunC/Documents/cocos2d-x-2.2/tools/tolua++/basic.lua",
+		"/I/JunC/Documents/cocos2d-x-2.2/tools/tolua++/build.bat",
+		"/I/JunC/Documents/cocos2d-x-2.2/projects/HelloWorld/Classes/HelloWorldScene.cpp",
+		"/I/JunC/Desktop/CMY2/CMYDOC.CPP",
+		"/I/JunC/Desktop/CMY2/CMYVIEW.H",
+		"/I/JunC/Desktop/CMY2/CMYVIEW.CPP",
+		"/I/JunC/Desktop/render.h",
+		"/I/JunC/Desktop/s.h",
+		"/I/JunC/Documents/cocos2d-x-2.2/projects/lua_test/Resources/hello.lua",
+		"/I/JunC/Desktop/CMY2/CMYDOC.H",
+		"/I/JunC/Desktop/fire_hj/fire_hj.cpp",
+		"/C/Users/JunC/AppData/Local/Temp/Rar$DI02.987/pot.cpp",
+		"/I/JunC/Desktop/CMY2/CMY.CPP",
+		"/I/JunC/Desktop/A04_摄像漫游/baiscobj.cpp",
+		"/I/JunC/Desktop/A04_摄像漫游/OpenGL.cpp",
+		"/I/JunC/Desktop/A04_摄像漫游/摄像漫游.cpp",
+		"/I/JunC/Documents/Projects/OpenGL/25CJSolar/Solar.cpp",
+		"/C/Users/JunC/AppData/Local/Temp/Rar$DI02.621/solar.cpp",
+		"/I/JunC/Documents/课程信息/DirectX3D/3D游戏项目实训/3D游戏项目实训/工程/生命游戏/生命游戏/main.cpp",
+		"/L/Users/JunC/Documents/VC++Directory/OpenSceneGraph/include/osgGA/GUIEventAdapter",
+		"/I/JunC/Desktop/input.cpp",
+		"/I/JunC/Desktop/input.h",
+		"/I/JunC/Documents/Projects/皮影戏/attempt/external_support/lua/include/tolua++.h"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"I:\\JunC\\Documents\\quick-cocos2d-x-develop\\framework"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"menu_scene.healthbar",
+			"InitBubbles",
+			"CreateBubble",
+			"UpdateStatus2",
+			"GameUpdate",
+			"CreateCharacter",
+			"HealthBar",
+			"GeometryModel:CreateSquare()",
+			"GeometryModel:CreateSquare",
+			"CreateBubble",
+			"CreateCurtain",
+			"UpdateStatus2",
+			"UpdateStatus3",
+			"AddSprite",
+			"character1",
+			"menu_scene",
+			"bg_tex_name",
+			"health_text",
+			"SetValue",
+			"val",
+			"max_value",
+			"value",
+			"Value",
+			"value",
+			"Value",
+			"value",
+			"SetValue",
+			"width",
+			"HealthBar:New",
+			"max_value",
+			"HealthBar:New",
+			"SetValue",
+			"healthbar:SetPosition",
+			"menu_scene.healthbar",
+			"menu_scene.healthbar ",
+			"destination",
+			"SelectSprite",
+			"menu_scene.game_status",
+			"UpdateStatus3",
+			"pos",
+			"0",
+			"CameraUpdate",
+			"ground_sprite",
+			"CreateSquare",
+			"menu_scene.healthbar",
+			"Update",
+			"100",
+			"menu_scene.curtains",
+			"Character",
+			"ScheduleUpdate",
+			"Move",
+			"CreateEnemy",
+			"enemy",
+			"PlaySprite",
+			"finish_func",
+			"CreateEnemy",
+			"enemy",
+			"pause",
+			"Update",
+			"pause",
+			"wukong",
+			"menu_scene.character1",
+			"MoveToDestination",
+			"MoveAudiences",
+			"menu_scene.audience",
+			"GameUpdate",
+			"CameraUpdate",
+			"audience",
+			"menu_scene.audience",
+			"InitAudiences",
+			"menu_scene.audience",
+			"UpdateStatus1",
+			"character1",
+			"GameUpdate",
+			"Bubble",
+			"GameUpdate",
+			"UpdateStatus2",
+			"UpdateStatus3",
+			"Print",
+			"C4f",
+			"Log",
+			"class = ",
+			"function class",
+			"class",
+			"color4",
+			"vec3",
+			"Vec3Make",
+			"Vec3",
+			"GLState",
+			"point_light",
+			"camera",
+			"Camera",
+			"camera",
+			"Camera",
+			"camera",
+			"Camera",
+			"camera",
+			"CameraUpdate",
+			"const",
+			"Const",
+			"const",
+			"Const",
+			"const",
+			"&",
+			"public",
+			"const",
+			"Const",
+			"const",
+			"Const",
+			"const",
+			"Root",
+			"C4b",
+			"Color4b",
+			"Color4f",
+			"this->",
+			"->",
+			"this",
+			"Color4b",
+			"+",
+			"Lists",
+			"GenLists",
+			"CCObjectTypes",
+			"Node",
+			"CCNode",
+			"CCObject",
+			"virtual",
+			"explicit",
+			"explicit "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "scene_battle_ready.lua",
+					"settings":
+					{
+						"buffer_size": 8466,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 285.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "healthbar.lua",
+					"settings":
+					{
+						"buffer_size": 2048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1254.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "character.lua",
+					"settings":
+					{
+						"buffer_size": 6649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2280.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "pyx.lua",
+					"settings":
+					{
+						"buffer_size": 20205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7011.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "character - 副本.lua",
+					"settings":
+					{
+						"buffer_size": 6388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5378,
+								5378
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2959.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/I/JunC/Desktop/毕设-终极/游戏/Resources/script/conf.lua",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/I/JunC/Documents/Projects/皮影戏/Resources/Action/enemy_weapon/xiabing_stand.vds",
+					"settings":
+					{
+						"buffer_size": 2989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 254.0,
+	"status_bar_visible": true
+}

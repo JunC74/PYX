@@ -1,0 +1,17 @@
+class GeometryModel : public Model
+{
+public:
+
+	// 创建三角形
+	static GeometryModel* CreateTrilateral();
+
+	static GeometryModel* CreateSquareWithTexture(Texture2D* tex);
+	static GeometryModel* CreateSquareWithTexture(float anchor_x, float anchor_y, Texture2D* tex);
+
+	static GeometryModel* CreateSquare(float w, float h);
+	static GeometryModel* CreateSquare(float w, float h, float anchor_x, float anchor_y);
+
+	static GeometryModel* CreateSquare(float w, float h, float anchor_x, float anchor_y, Texture2D *tex);
+};
+
+

@@ -1,0 +1,1 @@
+copy *.h "F:\Project\TeamProject\piyingxi\tool\tolua++\"

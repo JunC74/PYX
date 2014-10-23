@@ -1,0 +1,61 @@
+$#include "LuaOpen.h"
+$#include "curtains.h "
+
+// struct type
+$pfile "attempt_err.pkg"
+$pfile "Color.pkg"
+$pfile "Size2D.pkg"
+$pfile "vec.pkg"
+$pfile "mat.pkg"
+$pfile "MatrixStack.pkg"
+$pfile "AABB.pkg"
+
+// cocoa
+$pfile "Object.pkg"
+$pfile "Array.pkg"
+$pfile "AutoReleasePool.pkg"
+$pfile "GLState.pkg"
+$pfile "ResourceManager.pkg"
+$pfile "Root.pkg"
+$pfile "Log.pkg"
+
+// schedule
+$pfile "schedule.pkg"
+
+// Message
+$pfile "Message.pkg"
+$pfile "MessagePump.pkg"
+
+// Input
+$pfile "input.pkg"
+$pfile "keyboard_conf.pkg"
+$pfile "keyboard.pkg"
+$pfile "mind_control_conf.pkg"
+$pfile "mind_control.pkg"
+
+// Shader
+$pfile "shader_program.pkg"
+$pfile "shader_program_cache.pkg"
+
+// Render
+$pfile "camera_class.pkg"
+$pfile "lighting_manage.pkg"
+$pfile "material.pkg"
+
+// Node
+$pfile "Node.pkg"
+$pfile "Sprite.pkg"
+
+//texture
+$pfile "texture2D.pkg"
+$pfile "TextureLoader.pkg"
+
+// model
+$pfile "geometry_model.pkg"
+$pfile "obj_model.pkg"
+$pfile "model.pkg"
+$pfile "vds_model.pkg"
+
+//gameclass
+$pfile "curtains.pkg"
+

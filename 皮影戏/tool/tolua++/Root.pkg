@@ -1,0 +1,20 @@
+
+class Root : public Object
+{
+public:
+	static Root* GetInstance();
+
+	// 新的渲染树入栈，但不释放之前的渲染树
+	void PushNode(Node *tag);
+
+	// 移除当前的渲染树
+	Node* PopNode();
+
+	// 替换当前的渲染树
+	void SetNode(Node* tag);
+
+	// 渲染当前的渲染树
+	void Draw(float f_time);
+	
+	Node* GetNode();
+};

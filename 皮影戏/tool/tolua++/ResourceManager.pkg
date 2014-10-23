@@ -1,0 +1,11 @@
+
+
+class ResourceManager : public Object
+{
+public:
+	// 获取当前的自动释放管理器的实例。
+	AutoReleasePool* GetAuoReleasePool();
+
+	static ResourceManager* GetInstance();
+
+};

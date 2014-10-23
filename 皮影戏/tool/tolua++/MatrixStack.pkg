@@ -1,0 +1,13 @@
+
+class MatrixStack : public Object
+{
+public:
+
+	int GetSize();
+
+	void Push( const mat4& m );
+
+	mat4& GetTop();
+
+	mat4 Pop( void );
+};

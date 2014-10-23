@@ -1,0 +1,27 @@
+
+	class Curtains : public Sprite
+	{
+	public:
+		Curtains();
+		~Curtains();
+
+		static Curtains* Create(int w,int h,float edge, float k,float damp,const char* file_name);//长、宽、弹簧长度、和贴图名称
+		bool Init(int w,int h,float edge, float k,float damp,const char* file_name);
+
+		void SetEdge(float edge){this->edge=edge;}//设置弹簧原长
+		void SetK(float k){this->k=k;};//设置弹簧劲度系数
+		void SetDamp(float damp){this->damp=damp;}//设置弹簧阻尼
+
+		int getW();
+		int getH();
+		float getEdge();		//返回弹簧原长
+		float getK();			//返回劲度系数K
+		float getDamp();		//返回阻尼
+
+
+		void Update(float dt);
+		virtual void Draw(float f_delta);
+
+		bool moveCurtainsL(float speed,int direction);
+		bool moveCurtainsR(float speed,int direction);
+	};

@@ -1,0 +1,19 @@
+class MessagePump : public Object
+{
+public:
+	static MessagePump* GetInstance();
+
+	~MessagePump();
+
+	void Update(float dt);
+
+	void AddMessageToSystem(int type);
+
+	int RegisterScriptFunc(int type, LUA_FUNCTION handler);
+
+	void UnRegisterForMessage(int id);
+
+	void SendMessage(Message *new_message);
+
+	bool IsTypeInSystem(int type);
+};

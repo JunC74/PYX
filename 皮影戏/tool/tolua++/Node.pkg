@@ -1,0 +1,116 @@
+	class Node : public Object
+	{
+
+		Node();
+
+		~Node();
+
+		static Node* Create();
+
+		bool Init();
+
+		// 添加孩子节点，其自身的计数器+1。
+		void AddChild(Node* object);
+
+		// 删除其孩子节点，其自身的计数器-1。
+		void DeleteChild(Node* object);
+
+		// 渲染该对象。
+		void Draw(float f_time);
+
+		// 围绕v3_axle向量旋转f_angle度。
+		void SetRotate(vec3 v3_axle, float f_theta);
+
+		void SetRotateX(float f_theta);
+
+		void SetRotateY(float f_theta);
+
+		void SetRotateZ(float f_theta);
+
+		// 设置缩放值。
+		void SetScale(float f_scale);
+
+		void SetScaleX(float f_scale_x);
+
+		void SetScaleY(float f_scale_y);
+
+		void SetScaleZ(float f_scale_z);
+		
+		void Scale(float f_scale);
+		void ScaleX(float f_scale_x);
+		void ScaleY(float f_scale_y);
+		void ScaleZ(float f_scale_z);
+		
+		// 得到缩放值。
+		vec3 GetScale();
+		// 自旋
+		void Spin(vec3 v3_axle, float f_theta);
+		void SpinX(float f_theta);
+		void SpinY(float f_theta);
+		void SpinZ(float f_theta);
+		
+
+		// 平移操作
+		void SetTranslation(vec3 v3_translation);
+
+		// X轴方向平移。
+		void SetTranslationX(float f_translation_x);
+
+		// 沿y轴方向平移。
+		void SetTranslationY(float f_translation_y);
+
+		// 沿Z轴方向平移。
+		void SetTranslationZ(float f_translation_z);
+		
+		// @brief 获取变换矩阵
+		mat4 GetTransform();
+		mat4 GetWorldTransform();
+		
+		// 访问孩子的渲染函数
+		void Visit(float f_time);
+
+		int GetWeight();
+
+		void SetWeight(int weight);
+
+		bool IsVisible();
+
+		void SetVisible(bool visible);
+
+		// 设置着色器
+		void SetShaderProgram(ShaderProgram *shader);
+
+		// 获取着色器
+		ShaderProgram* GetShaderProgram();
+
+		// ===== Scheduler and Timer =====
+
+		void Update(float dt);
+
+		void ScheduleUpdate (void);
+
+		void UnScheduleUpdate();
+
+		//void Schedule (SEL_SCHEDULE selector, float interval, unsigned int repeat, float delay);
+
+		int GetTag () const;
+
+		void SetTag (int nTag);
+
+		void* GetUserData ();
+
+		void SetUserData( void *pUserData ) ;
+
+		vec3 GetPosition();
+
+		void SetPosition(vec3 coord);
+		void SetPosition(float x, float y, float z);
+
+		vec3 ConvertToWorldSpace(vec3 coord);
+		
+		AABB GetAABB();
+		void SetAABB(AABB box);
+		// 碰撞检测
+		bool Collision(Node * b);
+
+	};

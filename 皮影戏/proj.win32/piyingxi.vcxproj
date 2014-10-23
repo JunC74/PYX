@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\attempt\at_type\AABB.cpp" />
+    <ClCompile Include="..\attempt\cocoa\Array.cpp" />
+    <ClCompile Include="..\attempt\cocoa\AutoReleasePool.cpp" />
+    <ClCompile Include="..\attempt\cocoa\FileTool.cpp" />
+    <ClCompile Include="..\attempt\cocoa\GLState.cpp" />
+    <ClCompile Include="..\attempt\cocoa\Log.cpp" />
+    <ClCompile Include="..\attempt\cocoa\Object.cpp" />
+    <ClCompile Include="..\attempt\cocoa\ResourceManager.cpp" />
+    <ClCompile Include="..\attempt\cocoa\Root.cpp" />
+    <ClCompile Include="..\attempt\external_support\CImage\CImage.cpp" />
+    <ClCompile Include="..\attempt\external_support\glm\glm.cpp" />
+    <ClCompile Include="..\attempt\external_support\TinyXML\tinyxml2.cpp" />
+    <ClCompile Include="..\attempt\input\input.cpp" />
+    <ClCompile Include="..\attempt\input\mind_control.cpp" />
+    <ClCompile Include="..\attempt\lua\LuaManager.cpp" />
+    <ClCompile Include="..\attempt\lua\LuaOpen.cpp" />
+    <ClCompile Include="..\attempt\lua\lua_support.cpp" />
+    <ClCompile Include="..\attempt\lua\tolua_fix.c" />
+    <ClCompile Include="..\attempt\message_system\MessagePump.cpp" />
+    <ClCompile Include="..\attempt\model\geometry_model.cpp" />
+    <ClCompile Include="..\attempt\model\model.cpp" />
+    <ClCompile Include="..\attempt\model\obj_model.cpp" />
+    <ClCompile Include="..\attempt\model\vds_model.cpp" />
+    <ClCompile Include="..\attempt\Node\action_sprite.cpp" />
+    <ClCompile Include="..\attempt\Node\Node.cpp" />
+    <ClCompile Include="..\attempt\Node\Sprite.cpp" />
+    <ClCompile Include="..\attempt\platform\win32\Application.cpp" />
+    <ClCompile Include="..\attempt\platform\win32\at_platform_win32.cpp" />
+    <ClCompile Include="..\attempt\platform\win32\GLView.cpp" />
+    <ClCompile Include="..\attempt\platform\win32\keyboard.cpp" />
+    <ClCompile Include="..\attempt\Render\camera_class.cpp" />
+    <ClCompile Include="..\attempt\Render\light_manage.cpp" />
+    <ClCompile Include="..\attempt\Render\material.cpp" />
+    <ClCompile Include="..\attempt\schedule\schedule.cpp" />
+    <ClCompile Include="..\attempt\schedule\Timeing.cpp" />
+    <ClCompile Include="..\attempt\shader\shader_program.cpp" />
+    <ClCompile Include="..\attempt\shader\shader_program_cache.cpp" />
+    <ClCompile Include="..\attempt\texture\texture2D.cpp" />
+    <ClCompile Include="..\attempt\texture\TextureLoader.cpp" />
+    <ClCompile Include="..\SourceCode\curtains.cpp" />
+    <ClCompile Include="..\SourceCode\main-win32.cpp" />
+    <ClCompile Include="..\SourceCode\pyx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\attempt\attempt.h" />
+    <ClInclude Include="..\attempt\at_config.h" />
+    <ClInclude Include="..\attempt\at_prefix.h" />
+    <ClInclude Include="..\attempt\at_type\AABB.h" />
+    <ClInclude Include="..\attempt\at_type\attempt_err_msg.h" />
+    <ClInclude Include="..\attempt\at_type\at_type.h" />
+    <ClInclude Include="..\attempt\at_type\Color.h" />
+    <ClInclude Include="..\attempt\at_type\mat.h" />
+    <ClInclude Include="..\attempt\at_type\Size2D.h" />
+    <ClInclude Include="..\attempt\at_type\vec.h" />
+    <ClInclude Include="..\attempt\cocoa\Array.h" />
+    <ClInclude Include="..\attempt\cocoa\AutoReleasePool.h" />
+    <ClInclude Include="..\attempt\cocoa\FileTool.h" />
+    <ClInclude Include="..\attempt\cocoa\GLState.h" />
+    <ClInclude Include="..\attempt\cocoa\GLViewInterface.h" />
+    <ClInclude Include="..\attempt\cocoa\Log.h" />
+    <ClInclude Include="..\attempt\cocoa\MatrixStack.h" />
+    <ClInclude Include="..\attempt\cocoa\Object.h" />
+    <ClInclude Include="..\attempt\cocoa\ResourceManager.h" />
+    <ClInclude Include="..\attempt\cocoa\Root.h" />
+    <ClInclude Include="..\attempt\external_support\CImage\CImage.h" />
+    <ClInclude Include="..\attempt\external_support\glm\glm.h" />
+    <ClInclude Include="..\attempt\external_support\lua\lauxlib.h" />
+    <ClInclude Include="..\attempt\external_support\lua\lua.h" />
+    <ClInclude Include="..\attempt\external_support\lua\lua.hpp" />
+    <ClInclude Include="..\attempt\external_support\lua\luaconf.h" />
+    <ClInclude Include="..\attempt\external_support\lua\lualib.h" />
+    <ClInclude Include="..\attempt\external_support\lua\tolua++.h" />
+    <ClInclude Include="..\attempt\external_support\TinyXML\tinyxml2.h" />
+    <ClInclude Include="..\attempt\input\input.h" />
+    <ClInclude Include="..\attempt\input\keyboard.h" />
+    <ClInclude Include="..\attempt\input\keyboard_conf.h" />
+    <ClInclude Include="..\attempt\input\mind_control.h" />
+    <ClInclude Include="..\attempt\input\mind_control_conf.h" />
+    <ClInclude Include="..\attempt\input\thinkgear.h" />
+    <ClInclude Include="..\attempt\lua\LuaManager.h" />
+    <ClInclude Include="..\attempt\lua\LuaOpen.h" />
+    <ClInclude Include="..\attempt\lua\lua_support.h" />
+    <ClInclude Include="..\attempt\lua\tolua_fix.h" />
+    <ClInclude Include="..\attempt\message_system\Message.h" />
+    <ClInclude Include="..\attempt\message_system\MessageEvent.h" />
+    <ClInclude Include="..\attempt\message_system\MessagePump.h" />
+    <ClInclude Include="..\attempt\model\geometry_model.h" />
+    <ClInclude Include="..\attempt\model\model.h" />
+    <ClInclude Include="..\attempt\model\obj_model.h" />
+    <ClInclude Include="..\attempt\model\vds_model.h" />
+    <ClInclude Include="..\attempt\Node\action_sprite.h" />
+    <ClInclude Include="..\attempt\Node\Node.h" />
+    <ClInclude Include="..\attempt\Node\Sprite.h" />
+    <ClInclude Include="..\attempt\platform\at_platform.h" />
+    <ClInclude Include="..\attempt\platform\win32\Application.h" />
+    <ClInclude Include="..\attempt\platform\win32\GLView.h" />
+    <ClInclude Include="..\attempt\platform\win32\win32_prefix.h" />
+    <ClInclude Include="..\attempt\Render\camera_class.h" />
+    <ClInclude Include="..\attempt\Render\light_manage.h" />
+    <ClInclude Include="..\attempt\Render\material.h" />
+    <ClInclude Include="..\attempt\schedule\schedule.h" />
+    <ClInclude Include="..\attempt\schedule\Timeing.h" />
+    <ClInclude Include="..\attempt\shader\shader_program.h" />
+    <ClInclude Include="..\attempt\shader\shader_program_cache.h" />
+    <ClInclude Include="..\attempt\texture\texture2D.h" />
+    <ClInclude Include="..\attempt\texture\TextureLoader.h" />
+    <ClInclude Include="..\SourceCode\curtains.h" />
+    <ClInclude Include="..\SourceCode\pyx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Shader\position_color_fragment.glsl" />
+    <None Include="..\Resources\Shader\position_color_vectex.glsl" />
+    <None Include="..\Resources\Shader\position_fragment.glsl" />
+    <None Include="..\Resources\Shader\position_tex_fragment.glsl" />
+    <None Include="..\Resources\Shader\position_tex_vectex.glsl" />
+    <None Include="..\Resources\Shader\position_vectex.glsl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FBE43C9F-B725-40B6-9AA1-65F11614508A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>piyingxi</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>../SourceCode;../attempt;$(IncludePath)</IncludePath>
+    <LibraryPath>../attempt;../attempt/external_support/lua/lib;$(LibraryPath)</LibraryPath>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>lua5.1.lib;lua51.lib;Lualib.lib;thinkgear.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Bscmake>
+      <PreserveSBR>true</PreserveSBR>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

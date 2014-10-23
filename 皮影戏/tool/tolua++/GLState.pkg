@@ -1,0 +1,49 @@
+
+	class GLState : public Object
+	{
+	public:
+
+		static GLState* GetInstance();
+
+		bool Init();
+
+		virtual ~GLState();
+
+		void SetGLWinView(GLViewInterface *gl_win);
+
+		void SetWinName(wstring win_name);
+
+
+		Size2D GetViewSize();
+
+		void SetViewSize(Size2D view_size);
+
+		// 显示opengl的信息
+		void ShowOpenGLInfo();
+
+		// 获取光源管理器
+		LightManage* GetLightManage();
+
+		// 获取投影矩阵栈
+		inline
+		MatrixStack* GetProjectionStack() { return projection_stack_; };
+
+		// 获取变换矩阵
+		inline
+		MatrixStack* GetModelViewStack() { return model_view_stack_; };
+		
+		// Shader设置
+		void PushShaderProgram(ShaderProgram *shader);
+		void PopShaderProgram();
+		ShaderProgram* GetShaderProgram();
+
+		// Camera 设置
+		void PushCamera(CameraClass *camera);
+		void PopCamera();
+		CameraClass* GetCamera();
+		
+		// 更新系统定义的Uniorm变量
+		void UpdateUniform();
+
+	};
+

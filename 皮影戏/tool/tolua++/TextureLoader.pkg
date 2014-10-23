@@ -1,0 +1,13 @@
+
+
+class TextureLoader : public Object
+{
+public:
+	// 获取纹理纹理
+	Texture2D* LoadTexture2D(char* file_name);
+
+	static TextureLoader* GetInstance();
+
+	// 提供给Texture2D的方法,用于从移除其索引
+	void RemoveTexture2D(Texture2D *tag);
+};

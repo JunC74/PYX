@@ -1,0 +1,39 @@
+
+	template <typename Type>
+	inline void SAFRelease(Type &p) {
+		if(p)
+		{
+			p->Release();
+			p = NULL;
+		}
+	}
+
+
+	template <typename Type>
+	inline void SAFRetain(Type &p)
+	{
+		if (p)
+		{
+			p->Retain();
+		}
+	}
+
+	template <typename Type>
+	inline void SAFDelete(Type &p)
+	{
+		if (p)
+		{
+			delete p;
+			p = NULL;
+		}
+	}
+
+	template <typename Type>
+	inline void SAFDeleteArray(Type &p)
+	{
+		if (p)
+		{
+			delete [] p;
+			p = NULL;
+		}
+	}

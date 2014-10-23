@@ -1,0 +1,35 @@
+
+class AABB
+{
+public:
+
+	AABB();
+	~AABB();
+	
+	void SetMin(float x, float y, float z);
+	vec3 GetMin();
+	
+	void SetMax(float x, float y, float z);
+	vec3 GetMax();
+	
+	// 添加顶点
+	void Add(float x, float y, float z);
+	
+	// 判断是否为空
+	bool Empty();
+	
+	// 检测点是否在包围盒内
+	bool IsContains(float x, float y, float z);
+	
+	// 获取中心点
+	vec3 GetCenter();
+	
+	// 碰撞检测
+	static bool IntersectAABBs(AABB &a, AABB &b);
+	
+	// 设置当期包围盒的变换矩阵
+	void SetToTransformedBox(mat4 t);
+	
+	// 重置包围盒
+	void Reset();
+};

@@ -1,0 +1,18 @@
+
+class MindControl : public Object
+{
+public:
+	
+	~MindControl();
+
+	static MindControl* Create();
+
+	int Read();
+
+	// 获取同的数据
+	int GetData(MindControlSymbol data_type);
+	
+	// 启用或禁用眨眼的检测
+	// 参数为 眨眼的阀值
+	void EnableBlinkDetection(int enable);
+};
